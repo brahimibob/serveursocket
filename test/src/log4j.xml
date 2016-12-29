@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/"
+	threshold="all" debug="false">
+
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d %-5p [%c]   %m%n" />
+		</layout>
+<!-- 		<filter class="org.apache.log4j.varia.LevelRangeFilter"> -->
+<!-- 			<param name="levelMin" value="INFO"/> -->
+<!-- 			<param name="levelMax" value="FATAL"/> -->
+<!-- 		</filter>	 -->
+	</appender>
+	
+	<appender name="MNIN" class="org.apache.log4j.RollingFileAppender">
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="20000000KB" />
+		<param name="MaxBackupIndex" value="10" />
+		<param name="File" value="/home/BB0D9D6N/logs/logs/serveurFTP-core.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p [%c] %m%n" />
+		</layout>
+<!-- 		<filter class="org.apache.log4j.varia.LevelRangeFilter"> -->
+<!-- 			<param name="levelMin" value="INFO" /> -->
+<!-- 			<param name="levelMax" value="FATAL" /> -->
+<!-- 		</filter> -->
+	</appender>
+
+	<logger name="bob" additivity="false">
+		<level value="DEBUG" />
+		<appender-ref ref="MNIN" />
+		<appender-ref ref="CONSOLE" />
+	</logger>
+
+	<root>
+		<appender-ref ref="MNIN" />
+		<appender-ref ref="CONSOLE" />		
+	</root>
+
+</log4j:configuration>
