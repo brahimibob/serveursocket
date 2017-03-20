@@ -30,7 +30,7 @@ public class Provider {
 
 	public static void main(String args[]) {
 		Provider server = new Provider();
-		influxDB = InfluxDBFactory.connect("http://zed332w9:8086", "bob", "bob");
+		influxDB = InfluxDBFactory.connect("http://localhost:8086", "bob", "bob");
 		try {
 			Threadsup tsup = new Threadsup();
 			tsup.start();
